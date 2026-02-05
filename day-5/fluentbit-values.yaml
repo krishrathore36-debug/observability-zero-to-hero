@@ -433,35 +433,33 @@ config:
 
   ## https://docs.fluentbit.io/manual/pipeline/outputs
   outputs: |
-    [OUTPUT]
-        Name es
-        Match kube.*
-        Type  _doc
-        Host elasticsearch-master
-        Port 9200
-        HTTP_User elastic
-        HTTP_Passwd kXkvftRtCeNntfbv
-        tls On
-        tls.verify Off
-        Logstash_Format On
-        Logstash_Prefix logstash
-        Retry_Limit False
-        Suppress_Type_Name On
+   [OUTPUT]
+    Name es
+    Match kube.*
+    Host elasticsearch-master.logging.svc.cluster.local
+    Port 9200
+    HTTP_User elastic
+    HTTP_Passwd kXkvftRtCeNntfbv
+    tls On
+    tls.verify Off
+    Logstash_Format On
+    Logstash_Prefix logstash
+    Retry_Limit False
+    Suppress_Type_Name On
 
-    [OUTPUT]
-        Name es
-        Match host.*
-        Type  _doc
-        Host elasticsearch-master
-        Port 9200
-        HTTP_User elastic
-        HTTP_Passwd kXkvftRtCeNntfbv
-        tls On
-        tls.verify Off
-        Logstash_Format On
-        Logstash_Prefix node
-        Retry_Limit False
-        Suppress_Type_Name On
+[OUTPUT]
+    Name es
+    Match host.*
+    Host elasticsearch-master.logging.svc.cluster.local
+    Port 9200
+    HTTP_User elastic
+    HTTP_Passwd kXkvftRtCeNntfbv
+    tls On
+    tls.verify Off
+    Logstash_Format On
+    Logstash_Prefix node
+    Retry_Limit False
+    Suppress_Type_Name On
 
   ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/upstream-servers
   ## This configuration is deprecated, please use `extraFiles` instead.
